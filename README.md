@@ -1,1 +1,9 @@
-This is a starter template for [Learn Next.js](https://nextjs.org/learn).
+## Online store
+
+### Stack
+
+#### React
+
+#### Next.js
+
+#### Styled components
