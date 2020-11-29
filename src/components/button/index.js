@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import Link from 'next/link';
 
 const defaultStyle = css`
   background: ${({ theme }) => theme.colors.main};
@@ -46,7 +47,7 @@ const initialStyle = css`
   color: ${({ theme }) => theme.colors.dark};
 `;
 
-const GetBackground = (btnType) => {
+const getBackground = (btnType) => {
   switch (btnType) {
     case 'default':
       return defaultStyle;
@@ -75,7 +76,7 @@ const ButtonStyle = css`
   line-height: ${({ theme: { ms } }) => ms(2)};
   transition: all 0.3s ease;
   margin: 0 ${({ theme: { ms } }) => ms(-7)};
-  ${({ type, theme }) => GetBackground(type, theme)};
+  ${({ type, theme }) => getBackground(type, theme)};
 
   &:disabled {
     opacity: 0.6;
@@ -91,7 +92,13 @@ export const Button = styled.button`
   ${ButtonStyle}
 `;
 
-export const ButtonLink = styled.a`
+const StyledLink = styled.a`
   text-decoration: none;
   ${ButtonStyle}
 `;
+
+export const ButtonLink = ({ href, children, ...rest }) => (
+  <Link prefetch href={href} passHref>
+    <StyledLink {...rest}>{children}</StyledLink>
+  </Link>
+);
