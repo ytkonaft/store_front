@@ -12,7 +12,7 @@ const Product = () => {
         <Row>
           <Col>
             <Title type="1">Product</Title>
-            <ButtonLink type="default" href="/">
+            <ButtonLink type="primary" href="/">
               To index
             </ButtonLink>
           </Col>

@@ -1,38 +1,15 @@
 import styled, { css } from 'styled-components';
 import Link from 'next/link';
 
-const defaultStyle = css`
-  background: ${({ theme }) => theme.colors.main};
-  color: ${({ theme }) => theme.colors.white};
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.hover.main};
-  }
-`;
-
 const secondaryStyle = css`
   background: transparent;
-  color: ${({ theme }) => theme.colors.main};
-  border: 1px solid ${({ theme }) => theme.colors.main};
+  color: ${({ theme }) => theme.colors.primary};
+  border-color: ${({ theme }) => theme.colors.primary};
 
   &:hover {
-    background: ${({ theme }) => theme.colors.main};
+    background: ${({ theme }) => theme.colors.primary};
     color: ${({ theme }) => theme.colors.white};
   }
-`;
-
-const dangerStyle = css`
-  background: ${({ theme }) => theme.colors.error};
-  color: ${({ theme }) => theme.colors.white};
-
-  &:hover {
-    background: ${({ theme }) => theme.colors.hover.error};
-  }
-`;
-
-const successStyle = css`
-  background: ${({ theme }) => theme.colors.success};
-  color: ${({ theme }) => theme.colors.white};
 `;
 
 const disabledStyle = css`
@@ -47,16 +24,25 @@ const initialStyle = css`
   color: ${({ theme }) => theme.colors.dark};
 `;
 
-const getBackground = (btnType) => {
-  switch (btnType) {
-    case 'default':
-      return defaultStyle;
+const buttonStyles = (type) => css`
+  background: ${({ theme }) => theme.colors[type]};
+  color: ${({ theme }) => theme.colors.white};
+  border: 1px solid ${({ theme }) => theme.colors[type]};
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.hover[type]};
+    border-color: ${({ theme }) => theme.colors.hover[type]};
+  }
+`;
+
+const getBackground = (type) => {
+  switch (type) {
+    case 'primary':
+    case 'danger':
+    case 'success':
+      return buttonStyles(type);
     case 'secondary':
       return secondaryStyle;
-    case 'danger':
-      return dangerStyle;
-    case 'success':
-      return successStyle;
     case 'disabled':
       return disabledStyle;
     default:
@@ -66,17 +52,18 @@ const getBackground = (btnType) => {
 
 const ButtonStyle = css`
   border: none;
-  padding: 10px 15px;
+  padding: 10px 15px 8px;
   cursor: pointer;
   display: flex;
   border-radius: 2px;
   vertical-align: top;
   align-items: center;
   font-size: ${({ theme: { ms } }) => ms(2)};
-  line-height: ${({ theme: { ms } }) => ms(2)};
+  line-height: ${({ theme: { ms } }) => ms(3)};
   transition: all 0.3s ease;
   margin: 0 ${({ theme: { ms } }) => ms(-7)};
-  ${({ type, theme }) => getBackground(type, theme)};
+  border: 1px solid;
+  ${({ type, theme }) => getBackground(type)};
 
   &:disabled {
     opacity: 0.6;
@@ -98,7 +85,7 @@ const StyledLink = styled.a`
 `;
 
 export const ButtonLink = ({ href, children, ...rest }) => (
-  <Link prefetch href={href} passHref>
+  <Link href={href} passHref>
     <StyledLink {...rest}>{children}</StyledLink>
   </Link>
 );

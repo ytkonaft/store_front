@@ -1,5 +1,5 @@
-import { createGlobalStyle } from "styled-components";
-import { normalize } from "polished";
+import { createGlobalStyle } from 'styled-components';
+import { normalize } from 'polished';
 
 const GlobalStyles = createGlobalStyle`
   ${normalize()}
@@ -15,6 +15,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     min-height: 100vh;
     font-size: 1.5rem;
+    background-color: #eaeaea;
     line-height: 1;
     font-family: Roboto, sans-serif;
 
@@ -28,7 +29,7 @@ const GlobalStyles = createGlobalStyle`
   *,
   *::before,
   *::after {
-    box-sizing: inherit;
+    box-sizing: border-box;
     outline: none;
   }
 

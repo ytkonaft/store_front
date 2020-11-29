@@ -13,6 +13,7 @@ export const Container = styled.div`
 
 export const Row = styled.div`
   display: flex;
+  min-width: 100%;
   margin: 0 -${GUTTER_WIDTH}px;
   flex-wrap: wrap;
 `;
@@ -41,7 +42,7 @@ const getColCss = (lg, md, sm) => {
 
 export const Col = styled.div`
   display: flex;
-  flex-direction: ${({ flexDirection }) => flexDirection || 'column'};
+  flex-direction: ${({ direction }) => direction || 'column'};
   padding: 0 ${GUTTER_WIDTH}px;
   align-items: ${({ alignItems }) => alignItems || 'flex-start'};
   ${({ lg, md, sm }) => getColCss(lg, md, sm)};
