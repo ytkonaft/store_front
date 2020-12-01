@@ -44,6 +44,7 @@ export const Col = styled.div`
   display: flex;
   flex-direction: ${({ direction }) => direction || 'column'};
   padding: 0 ${GUTTER_WIDTH}px;
-  align-items: ${({ alignItems }) => alignItems || 'flex-start'};
+  align-items: ${({ align }) => align || 'flex-start'};
+  justify-content: ${({ justify }) => justify || 'flex-start'};
   ${({ lg, md, sm }) => getColCss(lg, md, sm)};
 `;

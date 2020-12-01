@@ -8,8 +8,8 @@ const RenderCols = (count) => {
 
   return (
     <Row>
-      {colArr.map(() => (
-        <Col sm={width}>
+      {colArr.map((_, i) => (
+        <Col sm={width} key={i}>
           <Surface>
             <small>{width}</small>
           </Surface>

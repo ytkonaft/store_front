@@ -1,6 +1,5 @@
 import Document, { Head, Main, NextScript, Html } from 'next/document';
 import Fonts from 'src/styles/fonts';
-import { Header } from 'src/components/';
 
 // Import styled components ServerStyleSheet
 import { ServerStyleSheet } from 'styled-components';
@@ -29,7 +28,6 @@ export default class MyDocument extends Document {
           {this.props.styleTags}
         </Head>
         <body>
-          <Header />
           <Main />
           <NextScript />
         </body>
